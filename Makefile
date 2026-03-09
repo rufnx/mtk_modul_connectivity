@@ -128,5 +128,5 @@ endif
 export CFG_FM_CHIP_ID=$(MTK_PLATFORM_ID)
 export CFG_FM_CHIP=$(FM_CHIP)
 obj-y += fmradio/
-obj-y += gps_drv/
+obj-y += gps/
 endif #EOF
