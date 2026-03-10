@@ -16,7 +16,8 @@
 
 TOP := $(srctree)
 ifeq ($(TARGET_BUILD_VARIANT),)
-$(warning TARGET_BUILD_VARIANT is empty! Using default option.)
+$(info TARGET_BUILD_VARIANT is empty! Using default option.)
+$(info CONFIGURATION BY RUFNX)
 TARGET_BUILD_VARIANT := user
 endif
 
@@ -48,7 +49,7 @@ $(MODULE_NAME)-objs += power_throttling/adapter.o
 $(MODULE_NAME)-objs += power_throttling/core.o
 $(MODULE_NAME)-objs += power_throttling/test.o
 
-ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),y)
+$(info --------------------)
 $(info $$CONFIG_MTK_COMBO_CHIP is [${CONFIG_MTK_COMBO_CHIP}])
 MTK_PLATFORM_ID := $(patsubst CONSYS_%,%,$(subst ",,$(CONFIG_MTK_COMBO_CHIP)))
 $(info MTK_PLATFORM_ID is [${MTK_PLATFORM_ID}])
@@ -93,6 +94,7 @@ else
 $(info WIFI_IP_SET is 1)
 export WIFI_IP_SET=1
 endif
+$(info --------------------)
 
 # Do build-in for xxx.c checking
 subdir-ccflags-y += -D MTK_WCN_REMOVE_KERNEL_MODULE
@@ -129,4 +131,4 @@ export CFG_FM_CHIP_ID=$(MTK_PLATFORM_ID)
 export CFG_FM_CHIP=$(FM_CHIP)
 obj-y += fmradio/
 obj-y += gps/
-endif #EOF
+obj-y += connfem/
