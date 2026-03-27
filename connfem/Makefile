@@ -40,7 +40,7 @@ ccflags-y += -I$(src)/include
 # ConnFem Module
 ###############################################################################
 MODULE_NAME := connfem
-obj-y += $(MODULE_NAME).o
+obj-m += $(MODULE_NAME).o
 
 $(MODULE_NAME)-objs += connfem_module.o
 $(MODULE_NAME)-objs += connfem_api.o

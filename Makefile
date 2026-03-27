@@ -16,8 +16,7 @@
 
 TOP := $(srctree)
 ifeq ($(TARGET_BUILD_VARIANT),)
-$(info TARGET_BUILD_VARIANT is empty! Using default option.)
-$(info CONFIGURATION BY RUFNX)
+$(info --------------------rufnx)
 TARGET_BUILD_VARIANT := user
 endif
 
@@ -99,9 +98,6 @@ $(info --------------------)
 # Do build-in for xxx.c checking
 subdir-ccflags-y += -D MTK_WCN_REMOVE_KERNEL_MODULE
 subdir-ccflags-y += -D MTK_WCN_BUILT_IN_DRIVER
-obj-y += common/
-obj-y += wlan/adaptor/
-obj-y += wlan/core/gen4m/
 
 ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885"))
 export _MTK_BT_CHIP=MTK_CONSYS_MT6885
@@ -110,7 +106,6 @@ export _MTK_BT_CHIP=MTK_CONSYS_MT6893
 else ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6877"))
 export _MTK_BT_CHIP=MTK_CONSYS_MT6877
 endif
-obj-y += bt/mt66xx/wmt/
 
 ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885" "CONSYS_6893" "CONSYS_6877"))
 export CFG_BUILD_CONNAC2=true
@@ -129,6 +124,11 @@ endif
 
 export CFG_FM_CHIP_ID=$(MTK_PLATFORM_ID)
 export CFG_FM_CHIP=$(FM_CHIP)
+
+obj-y += common/
+obj-y += wlan/adaptor/
+obj-y += wlan/core/gen4m/
+obj-y += bt/mt66xx/wmt/
 obj-y += fmradio/
 obj-y += gps/
 obj-y += connfem/
